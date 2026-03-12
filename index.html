@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ProdigyHQ — Helping Nigerian children succeed in school and beyond. The Complete JAMB & WAEC Study Bundle for SS3 students.">
+<meta property="og:title" content="ProdigyHQ — JAMB & WAEC Study Bundle">
+<meta property="og:description" content="3 resources. One complete system. Helping Nigerian children pass JAMB & WAEC.">
+<title>ProdigyHQ — Helping Nigerian Children Succeed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ── RESET & BASE ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #F5F5F0;
+  color: #0D1B2A;
+  overflow-x: hidden;
+}
+
+/* ── TOKENS ──────────────────────────────────────────────────────── */
+:root {
+  --green-dark: #0F4D24;
+  --green:      #1A7A3A;
+  --green-mid:  #2A9A4A;
+  --green-lite: #E8F5E9;
+  --green-pale: #F0FAF3;
+  --gold:       #D4A017;
+  --gold-lite:  #FEF9EC;
+  --navy:       #0D1B2A;
+  --white:      #FFFFFF;
+  --off:        #F5F5F0;
+  --grey:       #6B7280;
+  --red:        #C62828;
+  --max:        1160px;
+}
+
+/* ── UTILITY ─────────────────────────────────────────────────────── */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+.section    { padding: 96px 0; }
+.section-sm { padding: 64px 0; }
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 6px 16px; border-radius: 30px;
+}
+.tag-green { background: var(--green-lite); color: var(--green-dark); }
+.tag-gold  { background: var(--gold-lite);  color: #7A5A00; border: 1px solid var(--gold); }
+.tag-white { background: rgba(255,255,255,.15); color: white; border: 1px solid rgba(255,255,255,.3); }
+
+/* ── SCROLL REVEAL ───────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+.reveal-delay-5 { transition-delay: .5s; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 16px 0;
+  transition: background .3s, box-shadow .3s;
+}
+nav.scrolled {
+  background: var(--navy);
+  box-shadow: 0 2px 24px rgba(0,0,0,.25);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.nav-logo .shield {
+  width: 36px; height: 40px;
+}
+.nav-logo .wordmark {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px; font-weight: 700;
+  color: white;
+}
+.nav-logo .wordmark span { color: var(--gold); }
+.nav-cta {
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 14px; font-weight: 700;
+  padding: 10px 24px; border-radius: 8px;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212,160,23,.4);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  background: var(--green-dark);
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  padding: 120px 0 80px;
+}
+
+.hero-bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+}
+
+.hero-circle-1 {
+  position: absolute; right: -200px; top: -200px;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  border: 60px solid rgba(255,255,255,.04);
+  pointer-events: none;
+}
+.hero-circle-2 {
+  position: absolute; right: -80px; top: -80px;
+  width: 480px; height: 480px;
+  border-radius: 50%;
+  border: 30px solid rgba(212,160,23,.1);
+  pointer-events: none;
+}
+
+.hero-gold-bar {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 5px; background: var(--gold);
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 60px; align-items: center;
+  position: relative; z-index: 1;
+}
+
+.hero-tag { margin-bottom: 24px; }
+
+.hero-h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(42px, 5vw, 70px);
+  font-weight: 700;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.hero-h1 .accent {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--gold);
+  display: block;
+}
+
+.hero-sub {
+  font-size: 20px; font-weight: 400;
+  color: rgba(255,255,255,.75);
+  line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: 36px;
+}
+
+.hero-bullets {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-bottom: 40px;
+}
+.hero-bullet {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 16px; color: rgba(255,255,255,.9);
+}
+.hero-bullet .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gold); flex-shrink: 0;
+}
+
+.hero-btns {
+  display: flex; gap: 14px; flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 16px; font-weight: 700;
+  padding: 16px 32px; border-radius: 10px;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(212,160,23,.45);
+}
+.btn-secondary {
+  background: rgba(255,255,255,.1);
+  color: white;
+  font-size: 16px; font-weight: 500;
+  padding: 16px 32px; border-radius: 10px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.2);
+  transition: background .2s;
+}
+.btn-secondary:hover { background: rgba(255,255,255,.18); }
+
+/* Hero card */
+.hero-card {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,.3);
+}
+.hero-card-top {
+  background: var(--green);
+  padding: 28px 28px 20px;
+}
+.hero-card-top .label {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(255,255,255,.7);
+  margin-bottom: 8px;
+}
+.hero-card-top .bundle-name {
+  font-size: 22px; font-weight: 700; color: white;
+  margin-bottom: 4px;
+}
+.hero-card-top .bundle-sub {
+  font-size: 14px; color: rgba(255,255,255,.7);
+}
+
+.hero-card-body { padding: 24px 28px; }
+.hero-card-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid #F0F0EC;
+}
+.hero-card-item:last-of-type { border-bottom: none; }
+.item-num {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: var(--green-lite);
+  color: var(--green-dark);
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.item-text .title {
+  font-size: 15px; font-weight: 700; color: var(--navy);
+  margin-bottom: 2px;
+}
+.item-text .desc {
+  font-size: 13px; color: var(--grey); line-height: 1.4;
+}
+
+.hero-card-footer {
+  background: var(--navy);
+  padding: 20px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.price-badge .early {
+  font-size: 11px; font-weight: 700; color: var(--gold);
+  letter-spacing: .08em; text-transform: uppercase;
+}
+.price-badge .amount {
+  font-size: 32px; font-weight: 700; color: white;
+}
+.price-badge .after {
+  font-size: 12px; color: rgba(255,255,255,.5);
+  text-decoration: line-through;
+}
+.hero-card-footer .wa-btn {
+  background: #25D366;
+  color: white;
+  font-size: 14px; font-weight: 700;
+  padding: 12px 20px; border-radius: 10px;
+  text-decoration: none;
+  transition: transform .2s;
+}
+.hero-card-footer .wa-btn:hover { transform: scale(1.04); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   PROBLEM
+═══════════════════════════════════════════════════════════════════ */
+#problem {
+  background: var(--white);
+}
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+}
+.problem-tag { margin-bottom: 20px; }
+.problem-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 700; line-height: 1.2;
+  color: var(--navy); margin-bottom: 20px;
+}
+.problem-h2 em { color: var(--green); font-style: italic; }
+.problem-body {
+  font-size: 17px; color: var(--grey);
+  line-height: 1.7; margin-bottom: 24px;
+}
+.problem-body strong { color: var(--navy); font-weight: 700; }
+
+.stat-cards {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.stat-card {
+  background: var(--off);
+  border-radius: 16px; padding: 24px 20px;
+  border-left: 4px solid var(--green);
+}
+.stat-card .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px; font-weight: 700;
+  color: var(--green); line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-card .label {
+  font-size: 14px; color: var(--grey); line-height: 1.4;
+}
+.stat-card.gold-border { border-left-color: var(--gold); }
+.stat-card.gold-border .num { color: var(--gold); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   BUNDLE
+═══════════════════════════════════════════════════════════════════ */
+#bundle { background: var(--off); }
+
+.section-header {
+  text-align: center; margin-bottom: 60px;
+}
+.section-header .tag { margin-bottom: 16px; }
+.section-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 700; line-height: 1.2;
+  color: var(--navy); margin-bottom: 14px;
+}
+.section-h2 em { color: var(--green); font-style: italic; }
+.section-sub {
+  font-size: 18px; color: var(--grey);
+  max-width: 560px; margin: 0 auto;
+  line-height: 1.6;
+}
+
+.bundle-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-bottom: 40px;
+}
+.bundle-card {
+  background: white;
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,.07);
+  transition: transform .3s, box-shadow .3s;
+}
+.bundle-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,.12);
+}
+.bundle-card-header {
+  background: var(--green-dark);
+  padding: 28px 24px 22px;
+  position: relative; overflow: hidden;
+}
+.bundle-card-header::after {
+  content: '';
+  position: absolute; bottom: -30px; right: -30px;
+  width: 100px; height: 100px; border-radius: 50%;
+  background: rgba(255,255,255,.06);
+}
+.bundle-card-header .res-num {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px;
+}
+.bundle-card-header .res-title {
+  font-size: 22px; font-weight: 700; color: white;
+  line-height: 1.2; margin-bottom: 6px;
+}
+.bundle-card-header .res-sub {
+  font-size: 13px; color: rgba(255,255,255,.65);
+}
+
+.bundle-card-body { padding: 24px; }
+.feature-list { list-style: none; }
+.feature-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 15px; color: #444; line-height: 1.5;
+  padding: 7px 0;
+  border-bottom: 1px solid #F5F5F0;
+}
+.feature-list li:last-child { border-bottom: none; }
+.feature-list li::before {
+  content: '✓';
+  color: var(--green); font-weight: 700;
+  flex-shrink: 0; margin-top: 1px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   COMPARISON
+═══════════════════════════════════════════════════════════════════ */
+#comparison { background: var(--navy); }
+
+#comparison .section-h2 { color: white; }
+#comparison .section-sub { color: rgba(255,255,255,.6); }
+
+.comparison-table {
+  background: #111928;
+  border-radius: 20px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.comp-header {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  background: #0A1320;
+}
+.comp-header-cell {
+  padding: 20px 24px;
+  font-size: 14px; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.comp-header-cell.topic  { color: rgba(255,255,255,.4); }
+.comp-header-cell.without { color: #FF6B6B; }
+.comp-header-cell.with    {
+  color: #4ADE80;
+  border-left: 2px solid rgba(74,222,128,.2);
+}
+
+.comp-row {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  border-top: 1px solid rgba(255,255,255,.05);
+  transition: background .2s;
+}
+.comp-row:hover { background: rgba(255,255,255,.03); }
+
+.comp-cell {
+  padding: 18px 24px;
+  font-size: 15px; line-height: 1.5;
+}
+.comp-cell.topic   { color: rgba(255,255,255,.7); font-weight: 500; }
+.comp-cell.without { color: #FF9999; }
+.comp-cell.with    {
+  color: #CCFFCC; font-weight: 500;
+  border-left: 2px solid rgba(74,222,128,.15);
+}
+.comp-cell .x { color: #FF4444; margin-right: 6px; }
+.comp-cell .v { color: #4ADE80; margin-right: 6px; }
+
+.comp-footer {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  background: #0A1320;
+  border-top: 2px solid rgba(255,255,255,.08);
+}
+.comp-footer-cell { padding: 20px 24px; }
+.comp-footer-cell .flabel { font-size: 12px; color: rgba(255,255,255,.4); margin-bottom: 4px; }
+.comp-footer-cell .fscore { font-size: 28px; font-weight: 700; }
+.comp-footer-cell .fscore.bad  { color: #FF4444; }
+.comp-footer-cell .fscore.good { color: #4ADE80; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════════════════════════════════ */
+#testimonials { background: var(--white); }
+
+.testi-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.testi-card {
+  background: var(--off);
+  border-radius: 18px; padding: 28px 24px;
+  position: relative;
+}
+.testi-card::before {
+  content: '\201C';
+  position: absolute; top: 16px; left: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 64px; color: var(--green-lite);
+  line-height: 1;
+}
+.testi-stars {
+  display: flex; gap: 4px; margin-bottom: 14px;
+}
+.testi-stars span { color: var(--gold); font-size: 16px; }
+.testi-text {
+  font-size: 15px; color: #444; line-height: 1.7;
+  margin-bottom: 20px; font-style: italic;
+}
+.testi-author {
+  display: flex; align-items: center; gap: 12px;
+}
+.testi-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--green-lite);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700; color: var(--green-dark);
+  flex-shrink: 0;
+}
+.testi-name { font-size: 14px; font-weight: 700; color: var(--navy); }
+.testi-role { font-size: 12px; color: var(--grey); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   PRICING / CTA
+═══════════════════════════════════════════════════════════════════ */
+#pricing {
+  background: var(--green-dark);
+  position: relative; overflow: hidden;
+}
+#pricing .hero-bg-grid {
+  position: absolute; inset: 0;
+  opacity: .5; pointer-events: none;
+}
+#pricing .hero-circle-1,
+#pricing .hero-circle-2 { pointer-events: none; }
+
+.pricing-inner {
+  text-align: center; position: relative; z-index: 1;
+}
+.pricing-inner .section-h2 { color: white; margin-bottom: 14px; }
+.pricing-inner .section-sub { color: rgba(255,255,255,.7); margin-bottom: 48px; }
+
+.price-card {
+  max-width: 520px; margin: 0 auto;
+  background: white;
+  border-radius: 24px; overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,.35);
+}
+.price-card-top {
+  background: var(--green);
+  padding: 32px 36px 28px;
+  text-align: left;
+}
+.price-card-top .ptag {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 20px;
+  margin-bottom: 16px;
+}
+.price-card-top .pname {
+  font-size: 26px; font-weight: 700; color: white;
+  margin-bottom: 4px;
+}
+.price-card-top .pdesc {
+  font-size: 15px; color: rgba(255,255,255,.75);
+}
+
+.price-card-body { padding: 28px 36px; }
+.price-includes {
+  list-style: none; margin-bottom: 28px;
+}
+.price-includes li {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 16px; color: var(--navy);
+  padding: 10px 0;
+  border-bottom: 1px solid #F0F0EC;
+}
+.price-includes li:last-child { border-bottom: none; }
+.price-includes li .check {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--green-lite);
+  color: var(--green);
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.price-row {
+  display: flex; align-items: flex-end; gap: 16px;
+  margin-bottom: 8px;
+}
+.price-main {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px; font-weight: 700;
+  color: var(--navy); line-height: 1;
+}
+.price-details .old {
+  font-size: 18px; color: var(--grey);
+  text-decoration: line-through; margin-bottom: 2px;
+}
+.price-details .after-label {
+  font-size: 13px; color: var(--red); font-weight: 600;
+}
+.price-note {
+  font-size: 14px; color: var(--grey);
+  margin-bottom: 24px; line-height: 1.5;
+}
+.price-note strong { color: var(--red); }
+
+.cta-wa {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%;
+  background: #25D366;
+  color: white;
+  font-size: 18px; font-weight: 700;
+  padding: 18px; border-radius: 12px;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+  margin-bottom: 12px;
+}
+.cta-wa:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(37,211,102,.4);
+}
+.cta-wa svg { width: 22px; height: 22px; fill: white; }
+
+.cta-guarantee {
+  font-size: 13px; color: var(--grey);
+  text-align: center; line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FAQ
+═══════════════════════════════════════════════════════════════════ */
+#faq { background: var(--off); }
+
+.faq-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.faq-item {
+  background: white;
+  border-radius: 14px; padding: 24px;
+  border-left: 4px solid var(--green-lite);
+  transition: border-color .2s;
+}
+.faq-item:hover { border-left-color: var(--green); }
+.faq-q {
+  font-size: 16px; font-weight: 700; color: var(--navy);
+  margin-bottom: 10px; line-height: 1.4;
+}
+.faq-a {
+  font-size: 15px; color: var(--grey); line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════════════════ */
+footer {
+  background: var(--navy);
+  padding: 48px 0 32px;
+}
+.footer-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+  margin-bottom: 32px;
+}
+.footer-brand .wordmark {
+  font-size: 24px; font-weight: 700; color: white;
+}
+.footer-brand .wordmark span { color: var(--gold); }
+.footer-brand .tagline {
+  font-size: 13px; color: rgba(255,255,255,.5);
+  margin-top: 4px;
+}
+.footer-contact {
+  text-align: right;
+}
+.footer-contact .label {
+  font-size: 12px; color: rgba(255,255,255,.4);
+  letter-spacing: .08em; text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.footer-contact .phone {
+  font-size: 20px; font-weight: 700; color: var(--gold);
+}
+.footer-contact .platform {
+  font-size: 13px; color: rgba(255,255,255,.5);
+}
+.footer-divider {
+  border: none; border-top: 1px solid rgba(255,255,255,.08);
+  margin-bottom: 24px;
+}
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p {
+  font-size: 13px; color: rgba(255,255,255,.35);
+}
+.footer-bottom .gold-line {
+  width: 40px; height: 3px; background: var(--gold);
+  border-radius: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .hero-inner        { grid-template-columns: 1fr; }
+  .hero-card         { max-width: 420px; }
+  .problem-grid      { grid-template-columns: 1fr; }
+  .bundle-cards      { grid-template-columns: 1fr; }
+  .testi-grid        { grid-template-columns: 1fr; }
+  .faq-grid          { grid-template-columns: 1fr; }
+  .comp-header,
+  .comp-row,
+  .comp-footer       { grid-template-columns: 1fr; }
+  .comp-header-cell.topic,
+  .comp-cell.topic,
+  .comp-footer-cell:first-child { display: none; }
+  .comp-header       { display: grid; grid-template-columns: 1fr 1fr; }
+  .comp-row          { display: grid; grid-template-columns: 1fr 1fr; }
+  .comp-footer       { display: grid; grid-template-columns: 1fr 1fr; }
+  .footer-inner      { flex-direction: column; align-items: flex-start; }
+  .footer-contact    { text-align: left; }
+  .stat-cards        { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .section    { padding: 64px 0; }
+  .hero-btns  { flex-direction: column; }
+  .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
+  .stat-cards { grid-template-columns: 1fr; }
+  .price-card-body { padding: 20px 22px; }
+  .price-card-top  { padding: 24px 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <!-- Shield SVG icon -->
+      <svg class="shield" viewBox="0 0 36 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 1L34 7V22C34 31.5 27 39.5 18 43C9 39.5 2 31.5 2 22V7L18 1Z"
+              fill="#1A7A3A" stroke="#D4A017" stroke-width="1.5"/>
+        <path d="M18 8L10 20H14V36L22 36V20H26L18 8Z" fill="white"/>
+      </svg>
+      <div class="wordmark">Prodigy<span>HQ</span></div>
+    </a>
+    <a href="#pricing" class="nav-cta">Get the Bundle →</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-circle-1"></div>
+  <div class="hero-circle-2"></div>
+  <div class="hero-gold-bar"></div>
+
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-tag reveal">
+          <span class="tag tag-white">For Parents of SS3 Students</span>
+        </div>
+        <h1 class="hero-h1 reveal reveal-delay-1">
+          Your child has one chance
+          <span class="accent">to pass JAMB & get<br>into university.</span>
+        </h1>
+        <p class="hero-sub reveal reveal-delay-2">
+          Most students fail <strong style="color:white">not because they are not smart</strong> —
+          but because they have no structure or system. We fix that.
+        </p>
+        <div class="hero-bullets reveal reveal-delay-3">
+          <div class="hero-bullet"><span class="dot"></span>Complete 9-subject study resource</div>
+          <div class="hero-bullet"><span class="dot"></span>14-week structured study plan</div>
+          <div class="hero-bullet"><span class="dot"></span>Free past question links for every subject</div>
+          <div class="hero-bullet"><span class="dot"></span>Sent directly to your WhatsApp in 5 minutes</div>
+        </div>
+        <div class="hero-btns reveal reveal-delay-4">
+          <a href="https://wa.me/2347076830082?text=Hi%2C%20I%20want%20the%20JAMB%20%26%20WAEC%20Study%20Bundle" class="btn-primary" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Order on WhatsApp
+          </a>
+          <a href="#bundle" class="btn-secondary">See what's inside ↓</a>
+        </div>
+      </div>
+
+      <div class="hero-right reveal reveal-delay-3">
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <div class="label">COMPLETE STUDY BUNDLE</div>
+            <div class="bundle-name">JAMB &amp; WAEC Bundle</div>
+            <div class="bundle-sub">3 resources · All combinations covered</div>
+          </div>
+          <div class="hero-card-body">
+            <div class="hero-card-item">
+              <div class="item-num">01</div>
+              <div class="item-text">
+                <div class="title">Exam Success Handbook</div>
+                <div class="desc">9 subjects · Exam traps · Examiner tips</div>
+              </div>
+            </div>
+            <div class="hero-card-item">
+              <div class="item-num">02</div>
+              <div class="item-text">
+                <div class="title">14-Week Timetable &amp; Tips</div>
+                <div class="desc">Daily schedule · 7 strategies for 250+</div>
+              </div>
+            </div>
+            <div class="hero-card-item">
+              <div class="item-num">03</div>
+              <div class="item-text">
+                <div class="title">Resource Directory</div>
+                <div class="desc">Free past questions · All subjects</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-card-footer">
+            <div class="price-badge">
+              <div class="early">EARLY BIRD</div>
+              <div class="amount">₦3,500</div>
+              <div class="after">₦5,000 after</div>
+            </div>
+            <a href="https://wa.me/2347076830082?text=Hi%2C%20I%20want%20the%20JAMB%20%26%20WAEC%20Study%20Bundle" class="wa-btn" target="_blank">Order Now →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROBLEM ════════════════════════════════════════════════════════ -->
+<section id="problem" class="section">
+  <div class="container">
+    <div class="problem-grid">
+      <div>
+        <div class="problem-tag reveal">
+          <span class="tag tag-green">The Reality</span>
+        </div>
+        <h2 class="problem-h2 reveal reveal-delay-1">
+          Why do so many<br><em>brilliant students fail?</em>
+        </h2>
+        <p class="problem-body reveal reveal-delay-2">
+          Every year, thousands of Nigerian students walk into JAMB and WAEC without a real plan.
+          They read textbooks, they study hard — but <strong>without structure, effort alone is not enough.</strong>
+        </p>
+        <p class="problem-body reveal reveal-delay-2">
+          The students who score 250+ are not necessarily smarter. They know <strong>what to study, how to study it,
+          and exactly what the examiner is looking for.</strong> That's the edge this bundle gives your child.
+        </p>
+      </div>
+      <div class="stat-cards reveal reveal-delay-2">
+        <div class="stat-card">
+          <div class="num">73%</div>
+          <div class="label">of JAMB candidates score below 200 every year</div>
+        </div>
+        <div class="stat-card gold-border">
+          <div class="num">1 in 4</div>
+          <div class="label">students repeat the exam due to poor preparation strategy</div>
+        </div>
+        <div class="stat-card gold-border">
+          <div class="num">14wks</div>
+          <div class="label">is all a focused student needs to be fully exam-ready</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">₦3.5k</div>
+          <div class="label">vs years of lost time from repeating an exam unnecessarily</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BUNDLE ════════════════════════════════════════════════════════ -->
+<section id="bundle" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag tag-green reveal">What's Inside</span>
+      <h2 class="section-h2 reveal reveal-delay-1">Three resources.<br><em>One complete system.</em></h2>
+      <p class="section-sub reveal reveal-delay-2">Everything your child needs — and nothing they don't.</p>
+    </div>
+
+    <div class="bundle-cards">
+      <div class="bundle-card reveal reveal-delay-1">
+        <div class="bundle-card-header">
+          <div class="res-num">Resource 01</div>
+          <div class="res-title">Exam Success Handbook</div>
+          <div class="res-sub">9 subjects covered in full</div>
+        </div>
+        <div class="bundle-card-body">
+          <ul class="feature-list">
+            <li>Use of English — comprehension, grammar, oral, essay</li>
+            <li>Mathematics — algebra, geometry, statistics, sets</li>
+            <li>Biology, Chemistry, Physics — full coverage</li>
+            <li>Economics, Accounting, Commerce, Government, CRK</li>
+            <li>Exam trap boxes for every topic — what to avoid</li>
+            <li>Examiner tip boxes — what earns marks</li>
+            <li>Topic frequency ratings — what comes up most</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bundle-card reveal reveal-delay-2">
+        <div class="bundle-card-header">
+          <div class="res-num">Resource 02</div>
+          <div class="res-title">14-Week Timetable &amp; Exam Tips</div>
+          <div class="res-sub">Structure from Day 1 to Exam Day</div>
+        </div>
+        <div class="bundle-card-body">
+          <ul class="feature-list">
+            <li>Week-by-week study plan across 4 phases</li>
+            <li>Daily schedule from 5:30am to 9pm</li>
+            <li>Subject rotation by combination type</li>
+            <li>7 strategies to score 250+ in JAMB CBT</li>
+            <li>WAEC paper format breakdown by subject</li>
+            <li>Theory, essay and practical tips for WAEC</li>
+            <li>Final week checklist &amp; exam day protocol</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bundle-card reveal reveal-delay-3">
+        <div class="bundle-card-header">
+          <div class="res-num">Resource 03</div>
+          <div class="res-title">Past Questions Resource Directory</div>
+          <div class="res-sub">Free download links for every subject</div>
+        </div>
+        <div class="bundle-card-body">
+          <ul class="feature-list">
+            <li>JAMB past questions — all subjects with links</li>
+            <li>WAEC past questions — all subjects with links</li>
+            <li>Organised by Science, Commercial &amp; Arts combinations</li>
+            <li>Backup sources if primary links are unavailable</li>
+            <li>Free PDF merger tools to combine all downloads</li>
+            <li>Phase-by-phase guide on how to use past questions</li>
+            <li>The marking method that actually raises scores</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMPARISON ════════════════════════════════════════════════════ -->
+<section id="comparison" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag tag-white reveal">Same Exam. Different Results.</span>
+      <h2 class="section-h2 reveal reveal-delay-1">What changes<br><em style="color:#4ADE80">with the bundle.</em></h2>
+      <p class="section-sub reveal reveal-delay-2">The difference between 140 and 280 in JAMB is not intelligence — it's preparation.</p>
+    </div>
+
+    <div class="comparison-table reveal reveal-delay-2">
+      <div class="comp-header">
+        <div class="comp-header-cell topic">Area</div>
+        <div class="comp-header-cell without">✗ Without a Plan</div>
+        <div class="comp-header-cell with">✓ With the Bundle</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell topic">Study Structure</div>
+        <div class="comp-cell without"><span class="x">✗</span>Random reading, no clear goal</div>
+        <div class="comp-cell with"><span class="v">✓</span>14-week plan, clear daily targets</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell topic">Study Material</div>
+        <div class="comp-cell without"><span class="x">✗</span>Textbooks only, covering everything</div>
+        <div class="comp-cell with"><span class="v">✓</span>Exam-focused Handbook for all 9 subjects</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell topic">Past Questions</div>
+        <div class="comp-cell without"><span class="x">✗</span>Can't find them or uses wrong ones</div>
+        <div class="comp-cell with"><span class="v">✓</span>Direct free links, organised by combination</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell topic">Exam Awareness</div>
+        <div class="comp-cell without"><span class="x">✗</span>Walk in hoping for the best</div>
+        <div class="comp-cell with"><span class="v">✓</span>Knows exam traps &amp; what examiners want</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell topic">CBT Strategy</div>
+        <div class="comp-cell without"><span class="x">✗</span>Panic and guessing in the hall</div>
+        <div class="comp-cell with"><span class="v">✓</span>7 proven strategies for 250+ score</div>
+      </div>
+      <div class="comp-footer">
+        <div class="comp-footer-cell"></div>
+        <div class="comp-footer-cell">
+          <div class="flabel">Typical outcome</div>
+          <div class="fscore bad">140–180 / 400</div>
+        </div>
+        <div class="comp-footer-cell">
+          <div class="flabel">Target with bundle</div>
+          <div class="fscore good">250–320 / 400</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ══════════════════════════════════════════════════ -->
+<section id="testimonials" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag tag-green reveal">Parents Are Talking</span>
+      <h2 class="section-h2 reveal reveal-delay-1">What parents are <em>saying.</em></h2>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"My daughter had been studying for months with no real direction. The timetable changed everything. She finally knew exactly what to do each day and walked into JAMB with confidence."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">Adaeze O.</div>
+            <div class="testi-role">Mother of JAMB candidate, Lagos</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"The Exam Success Handbook is exactly what I was looking for. Every subject broken down, with tips on what the examiner actually wants to see. My son used it for WAEC and it showed."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">K</div>
+          <div>
+            <div class="testi-name">Kunle A.</div>
+            <div class="testi-role">Father of WAEC candidate, Abuja</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-3">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"I spent hours trying to find past questions online and kept hitting dead ends. The Resource Directory had everything in one place. Saved me so much time and stress."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">N</div>
+          <div>
+            <div class="testi-name">Ngozi E.</div>
+            <div class="testi-role">Mother of SS3 student, Port Harcourt</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ════════════════════════════════════════════════════════ -->
+<section id="pricing" class="section">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-circle-1"></div>
+  <div class="hero-circle-2"></div>
+
+  <div class="container pricing-inner">
+    <span class="tag tag-white reveal" style="margin-bottom:16px;display:inline-block">Limited Early Bird Offer</span>
+    <h2 class="section-h2 reveal reveal-delay-1" style="color:white">Get the complete bundle<br><em style="color:var(--gold)">today — before price changes.</em></h2>
+    <p class="section-sub reveal reveal-delay-2" style="margin-bottom:48px">First 20 parents get the full bundle at ₦3,500. Price rises to ₦5,000 after the early bird closes.</p>
+
+    <div class="price-card reveal reveal-delay-2">
+      <div class="price-card-top">
+        <span class="ptag">EARLY BIRD — First 20 Parents</span>
+        <div class="pname">Complete JAMB &amp; WAEC Study Bundle</div>
+        <div class="pdesc">Everything your child needs. Delivered to your WhatsApp instantly.</div>
+      </div>
+      <div class="price-card-body">
+        <ul class="price-includes">
+          <li><span class="check">✓</span>Exam Success Handbook — 9 subjects</li>
+          <li><span class="check">✓</span>14-Week Timetable &amp; Exam Tips</li>
+          <li><span class="check">✓</span>Past Questions Resource Directory</li>
+          <li><span class="check">✓</span>Delivered to WhatsApp in 5 minutes</li>
+          <li><span class="check">✓</span>Science, Commercial &amp; Arts covered</li>
+        </ul>
+        <div class="price-row">
+          <div class="price-main">₦3,500</div>
+          <div class="price-details">
+            <div class="old">₦5,000</div>
+            <div class="after-label">After first 20 parents</div>
+          </div>
+        </div>
+        <p class="price-note">
+          <strong>Only 20 spots at this price.</strong> Once they're gone, the price goes up to ₦5,000.
+          Message us now to secure your spot.
+        </p>
+        <a href="https://wa.me/2347076830082?text=Hi%2C%20I%20want%20the%20JAMB%20%26%20WAEC%20Study%20Bundle%20at%20the%20early%20bird%20price" class="cta-wa" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order on WhatsApp — 07076830082
+        </a>
+        <p class="cta-guarantee">Delivered instantly to your WhatsApp · No login required · Works on any phone</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ════════════════════════════════════════════════════════════ -->
+<section id="faq" class="section-sm">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-h2 reveal">Questions parents ask.</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-q">How will I receive the bundle?</div>
+        <div class="faq-a">Once you message us on WhatsApp, we send all 3 PDF resources directly to your WhatsApp chat within 5 minutes. No app downloads, no accounts needed.</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <div class="faq-q">What subjects does the Exam Success Handbook cover?</div>
+        <div class="faq-a">Use of English, Mathematics, Biology, Chemistry, Physics, Economics, Accounting, Commerce, Government, and CRK — covering Science, Commercial and Arts combinations.</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-3">
+        <div class="faq-q">My child is writing WAEC only, not JAMB. Is this still useful?</div>
+        <div class="faq-a">Yes. The Handbook covers both JAMB and WAEC exam formats separately for each subject. The Timetable also has a dedicated WAEC section. It works for either exam or both.</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-4">
+        <div class="faq-q">Is this different from what's freely available online?</div>
+        <div class="faq-a">Yes. The Exam Success Handbook is original content — exam trap analysis and examiner tips you won't find in standard textbooks or free past question PDFs. The timetable is also original. Only the Resource Directory links to freely available past questions.</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-q">When does the early bird price end?</div>
+        <div class="faq-a">The ₦3,500 price is for the first 20 parents only. After that it goes up to ₦5,000. We do not extend the early bird — once spots are gone, they're gone.</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <div class="faq-q">Can I share the bundle with other parents?</div>
+        <div class="faq-a">The bundle is for your child's personal use. If other parents want copies, they can order directly — and honestly, referring them means they get the best price if spots are still available.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="wordmark">Prodigy<span>HQ</span></div>
+        <div class="tagline">Helping Nigerian children succeed in school &amp; beyond</div>
+      </div>
+      <div class="footer-contact">
+        <div class="label">Order via WhatsApp</div>
+        <div class="phone">07076830082</div>
+        <div class="platform">WhatsApp only · Mon – Sat · 8am – 8pm</div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <p>© 2025 ProdigyHQ. All rights reserved.</p>
+      <div class="gold-line"></div>
+      <p>Built for Nigerian parents who want more for their children.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── NAV SCROLL ────────────────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ── SCROLL REVEAL ─────────────────────────────────────────────────────────
+const revealEls = document.querySelectorAll('.reveal');
+const observer  = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach(el => observer.observe(el));
+
+// Trigger elements already in view on load
+window.addEventListener('load', () => {
+  revealEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) el.classList.add('visible');
+  });
+});
+</script>
+</body>
+</html>
